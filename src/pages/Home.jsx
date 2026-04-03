@@ -2,11 +2,14 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import BackgroundSlider from "../components/BackgroundSlider";
 import AnimeList from "../components/AnimeList";
-import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 function Home() {
-  const [category, setCategory] = useState("anime");
+  const [type, setType] = useState("anime-popular");
+
+  // separate input vs actual search
+  const [searchInput, setSearchInput] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div className="home">
@@ -20,31 +23,37 @@ function Home() {
       {/* CONTENT */}
       <div className="content">
 
-        
-        <div className="inner-content">
-          <img src="/assets/dotts1.jpg" alt="" className="dotts--gray " />
-          <img src="/assets/dotts1.jpg" alt="" className="dotts--gray2 " />
-          <h2>==Start Here==</h2>
-          <select onChange={(e) => setCategory(e.target.value)}>
-            <option value="anime">Most Popular Anime</option>
-            <option value="manga">Most Popular Manga</option>
-            <option value="airing">Airing Now</option>
+        {/* CONTROLS */}
+        <div className="controls">
+
+          {/* DROPDOWN */}
+          <select onChange={(e) => setType(e.target.value)}>
+            <option value="anime-popular">Most Popular Anime</option>
+            <option value="manga-popular">Most Popular Manga</option>
+            <option value="anime-airing">Airing Now</option>
           </select>
-        
-          <div className="center">
-        {/* GRID */}
-        <AnimeList category={category} />
+
+          {/* SEARCH */}
+          <input
+            type="text"
+            placeholder="Search anime..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+
+          <button onClick={() => setSearchQuery(searchInput)}>
+            Search
+          </button>
+
         </div>
+
+        {/* GRID */}
+        <AnimeList type={type} searchQuery={searchQuery} />
+
       </div>
-      </div>
 
-  <Footer />
-
-
+      <Footer />
     </div>
-
-    
-
   );
 }
 

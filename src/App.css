@@ -225,6 +225,8 @@ FOR TABLETS AND SMARTPHONES
 }
 
 
+
+
 /*  React Changes  */
 
 
@@ -325,6 +327,7 @@ FOR TABLETS AND SMARTPHONES
 
 select {
   margin-left: 15px;
+  margin-right: 15px;
 }
 
 h2 {
@@ -470,6 +473,20 @@ h2 {
   width: 100%;
   padding: 10px;
 }
+.controls {
+  display: flex;
+}
+
+.controls input {
+  padding: 10px;
+  width: 200px;
+  margin-right: 0px;
+}
+
+.controls button {
+  padding: 10px;
+  margin-left: px;
+}
 
 /*  
 
@@ -485,6 +502,16 @@ FOR TABLETS AND SMARTPHONES React verison
 }
 .background-box {
   width: 100%;
+}
+
+.nav__links{
+  flex-direction: column;
+}
+
+.anime-detail-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 }
